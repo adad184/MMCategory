@@ -26,8 +26,6 @@
 
 @interface UIView (LJC)
 
-@property (nonatomic, readonly) UIView* glowView;
-
 + (UIImageView *) viewWithColor:(UIColor*)color;
 
 - (void) setTagName:(NSString*)name;

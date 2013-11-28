@@ -23,4 +23,3 @@
 #import "UIViewController+LJC.h"
 #import "UIFont+LJC.h"
 #import "UIAlertView+LJC.h"
-#import "UIImageView+LJC.h"
