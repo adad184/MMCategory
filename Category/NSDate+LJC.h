@@ -35,6 +35,8 @@
 + (NSDate *) dateWithMinutesFromNow: (NSUInteger) dMinutes;
 + (NSDate *) dateWithMinutesBeforeNow: (NSUInteger) dMinutes;
 
++ (NSDate *) dateWithDay:(NSUInteger)day inYear:(NSUInteger)year;
+
 // Comparing dates
 - (BOOL) isEqualToDateIgnoringTime: (NSDate *) aDate;
 - (BOOL) isToday;
@@ -63,6 +65,8 @@
 - (NSDate *) dateByAddingSecond: (NSInteger) dSecond;
 
 // Retrieving intervals
+- (NSInteger) secondsAfterDate: (NSDate *) aDate;
+- (NSInteger) secondsBeforeDate: (NSDate *) aDate;
 - (NSInteger) minutesAfterDate: (NSDate *) aDate;
 - (NSInteger) minutesBeforeDate: (NSDate *) aDate;
 - (NSInteger) hoursAfterDate: (NSDate *) aDate;

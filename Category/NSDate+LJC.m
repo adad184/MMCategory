@@ -93,6 +93,16 @@
 	return newDate;		
 }
 
++ (NSDate *)dateWithDay:(NSUInteger)day inYear:(NSUInteger)year
+{
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents* components = [[NSDateComponents alloc] init];
+    [components setDay:day];
+    [components setYear:year];
+    [components setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    return [gregorian dateFromComponents:components];
+}
+
 #pragma mark Comparing Dates
 
 - (BOOL) isEqualToDateIgnoringTime: (NSDate *) aDate
@@ -257,6 +267,19 @@
 }
 
 #pragma mark Retrieving Intervals
+
+- (NSInteger)secondsAfterDate:(NSDate *)aDate
+{
+	NSTimeInterval ti = [self timeIntervalSinceDate:aDate];
+	return (NSInteger)ti;
+    
+}
+
+- (NSInteger)secondsBeforeDate:(NSDate *)aDate
+{
+	NSTimeInterval ti = [aDate timeIntervalSinceDate:self];
+	return (NSInteger)ti;
+}
 
 - (NSInteger) minutesAfterDate: (NSDate *) aDate
 {

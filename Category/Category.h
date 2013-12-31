@@ -23,3 +23,7 @@
 #import "UIViewController+LJC.h"
 #import "UIFont+LJC.h"
 #import "UIAlertView+LJC.h"
+#import "UIResponder+LJC.h"
+#import "UITableView+LJC.h"
+#import "MBProgressHUD+LJC.h"
+#import "UIScrollView+LJC.h"

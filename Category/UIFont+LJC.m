@@ -12,9 +12,12 @@
 
 - (CGSize)getSizeOfStringLine:(NSString *)str
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     CGSize size = [str sizeWithFont:self
-                    constrainedToSize:CGSizeMake(CGFLOAT_MAX, 50)
-                        lineBreakMode:NSLineBreakByWordWrapping];
+                  constrainedToSize:CGSizeMake(CGFLOAT_MAX, 50)
+                      lineBreakMode:NSLineBreakByWordWrapping];
+#pragma clang diagnostic pop
     
     return size;
 }

@@ -41,19 +41,13 @@
     return [self viewWithTag:[name hash]];
 }
 
-- (void) autoResize:(UIViewAutoresizing)mask
-{
-	self.autoresizingMask = mask;
-	self.autoresizesSubviews = YES;
-}
-
 - (void)addToolbar:(UIView *)toolbar
 {
     toolbar.frame = CGRectMake(0
                                , self.frame.size.height-toolbar.frame.size.height
                                , toolbar.frame.size.width
                                , toolbar.frame.size.height);
-    [toolbar autoResize:FixedMarginB];
+    [toolbar setAutoresizingMask:FixedMarginB];
     [self addSubview:toolbar];
 }
 
@@ -66,6 +60,39 @@
 + (UIImageView *) viewWithColor:(UIColor*)color
 {
     return [[UIImageView alloc] initWithImage:[UIImage imageWithColor:color]];
+}
+
+- (UIView *) getFirstResponder
+{
+    if (self.isFirstResponder) {
+        return self;
+    }
+    
+    for (UIView *subView in self.subviews) {
+        UIView *firstResponder = [subView getFirstResponder];
+        if (firstResponder != nil) {
+            return firstResponder;
+        }
+    }
+    
+    return nil;
+}
+
+- (BOOL)haveSubview:(UIView*)subView
+{
+    UIView *v = subView;
+    
+    while (v)
+    {
+        if ( self == v )
+        {
+            return YES;
+        }
+        
+        v = v.superview;
+    }
+    
+    return NO;
 }
 
 @end

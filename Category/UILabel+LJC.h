@@ -13,4 +13,7 @@
 - (void) pure;
 - (float) getTrueHeight;
 
++ (id) pureLabel;
++ (id) pureLabelWithFrame:(CGRect)frame;
+
 @end

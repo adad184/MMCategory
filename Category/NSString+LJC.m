@@ -79,9 +79,12 @@
 
 - (CGFloat)heightByFont:(UIFont *)font width:(CGFloat)width
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     return [self sizeWithFont:font
             constrainedToSize:CGSizeMake(width, CGFLOAT_MAX)
                 lineBreakMode:NSLineBreakByWordWrapping].height;
+#pragma clang diagnostic pop
 }
 
 

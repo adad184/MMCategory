@@ -15,10 +15,10 @@
 #define FlexibleH                   UIViewAutoresizingFlexibleHeight
 #define FlexibleW                   UIViewAutoresizingFlexibleWidth
 
-#define FixedMarginT                FlexibleW | FlexibleB
-#define FixedMarginB                FlexibleW | FlexibleT
-#define FixedMarginL                FlexibleH | FlexibleR
-#define FixedMarginR                FlexibleH | FlexibleL
+#define FixedMarginT                FlexibleL | FlexibleR | FlexibleB
+#define FixedMarginB                FlexibleL | FlexibleR | FlexibleT
+#define FixedMarginL                FlexibleT | FlexibleB | FlexibleR
+#define FixedMarginR                FlexibleT | FlexibleB | FlexibleL
 #define FixedHorizental             FlexibleW | FlexibleT | FlexibleB
 #define FixedVertical               FlexibleH | FlexibleL | FlexibleR
 #define FixedALL                    FlexibleW | FlexibleH
@@ -30,9 +30,11 @@
 
 - (void) setTagName:(NSString*)name;
 - (UIView*) viewWithName:(NSString*)name;
-- (void) autoResize:(UIViewAutoresizing) type;
 - (void) addToolbar:(UIView*)toolbar;
 - (void) setPosition:(CGRect)position;
+
+- (UIView *) getFirstResponder;
+- (BOOL) haveSubview:(UIView*)subView;
 
 @property (nonatomic, readonly ) float x;
 @property (nonatomic, readonly ) float y;
