@@ -12,7 +12,7 @@
 
 + (UIButton*) buttonWithTarget:(id)target action:(SEL)sel
 {
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *btn = [self buttonWithType:UIButtonTypeCustom];
     [btn addTarget:target action:sel forControlEvents:UIControlEventTouchUpInside];
     return btn;
 }
@@ -68,5 +68,36 @@
         
     }
 }
+
+
+- (void) setBackgroundImageN:(NSString*)n H:(NSString*)h D:(NSString*)d S:(NSString *)s
+{
+    if ( n )
+    {
+        [self setBackgroundImage:[[UIImage imageName:n] stretched] forState:UIControlStateNormal];
+    }
+    
+    if ( h )
+    {
+        [self setBackgroundImage:[[UIImage imageName:h] stretched] forState:UIControlStateHighlighted];
+    }
+    
+    if ( d )
+    {
+        [self setBackgroundImage:[[UIImage imageName:d] stretched] forState:UIControlStateDisabled];
+    }
+    
+    if ( s )
+    {
+        [self setBackgroundImage:[[UIImage imageName:s] stretched] forState:UIControlStateSelected];
+        
+        if ( h )
+        {
+            [self setBackgroundImage:[[UIImage imageName:h] stretched] forState:UIControlStateHighlighted | UIControlStateSelected];
+        }
+        
+    }
+}
+
 
 @end

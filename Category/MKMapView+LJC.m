@@ -29,6 +29,7 @@
 	} else {
 		return round(MERCATOR_OFFSET - MERCATOR_RADIUS * logf((1 + sinf(latitude * M_PI / 180.0)) / (1 - sinf(latitude * M_PI / 180.0))) / 2.0);
 	}
+    
 }
 
 + (double)pixelSpaceXToLongitude:(double)pixelX
@@ -155,7 +156,9 @@
 	return region;
 }
 
-- (NSUInteger) zoomLevel {
+- (NSUInteger) zoomLevel
+{
+    
     MKCoordinateRegion region = self.region;
     
     double centerPixelX = [MKMapView longitudeToPixelSpaceX: region.center.longitude];
@@ -168,6 +171,7 @@
     double zoomLevel = 20 - zoomExponent;
     
     return zoomLevel;
+
 }
 
 

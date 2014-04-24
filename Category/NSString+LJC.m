@@ -50,7 +50,7 @@
     unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
     
     // Create 16 byte MD5 hash value, store in buffer
-    CC_MD5(ptr, strlen(ptr), md5Buffer);
+    CC_MD5(ptr, (CC_LONG)strlen(ptr), md5Buffer);
     
     // Convert MD5 value in the buffer to NSString of hex values
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
@@ -72,6 +72,22 @@
     return [encryptedData base64Encoding];
 }
 
+-(NSString *)URLEncodingUTF8String{
+    NSString *result = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                                           (CFStringRef)self,
+                                                                           NULL,
+                                                                           CFSTR("!*'();:@&=+$,/?%#[]"),
+                                                                           kCFStringEncodingUTF8));
+    return result;
+}
+-(NSString *)URLDecodingUTF8String{
+    NSString *result = (NSString *)CFBridgingRelease(CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,
+                                                                                           (CFStringRef)self,
+                                                                                           CFSTR(""),
+                                                                                           kCFStringEncodingUTF8));
+    return result;
+}
+
 - (BOOL)equals:(NSString *)str
 {
     return [self compare:str] == NSOrderedSame;
@@ -84,6 +100,17 @@
     return [self sizeWithFont:font
             constrainedToSize:CGSizeMake(width, CGFLOAT_MAX)
                 lineBreakMode:NSLineBreakByWordWrapping].height;
+#pragma clang diagnostic pop
+}
+
+- (CGFloat)widthByFont:(UIFont *)font
+{
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    return [self sizeWithFont:font
+            constrainedToSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)
+                lineBreakMode:NSLineBreakByWordWrapping].width;
 #pragma clang diagnostic pop
 }
 

@@ -15,8 +15,14 @@
 - (NSString *) trimBoth;
 - (NSString *) MD5;
 - (NSString *) AES;
+- (NSString *) UTF8;
 
 - (BOOL) equals:(NSString*)str;
 - (CGFloat) heightByFont:(UIFont*)font width:(CGFloat)width;
+- (CGFloat) widthByFont:(UIFont*)font;
+
+
+-(NSString *) URLEncodingUTF8String;//编码
+-(NSString *) URLDecodingUTF8String;//解码
 
 @end

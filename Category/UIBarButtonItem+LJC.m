@@ -24,32 +24,20 @@
                                         imgD:(NSString*)imgD
                                        title:(NSString*)title
 {
-    UIImage *iN = [UIImage imageNamed:imgN];
-    UIImage *iH = [UIImage imageNamed:imgH];
-    UIImage *iD = [UIImage imageNamed:imgD];
+    UIImage *iN = imgN?[UIImage imageNamed:imgN]:nil;
     
     UIButton *button = [UIButton buttonWithTarget:target action:action];
     button.bounds = CGRectMake(0, 0, iN.size.width, iN.size.height);
+    button.titleLabel.font = [UIFont boldSystemFontOfSize:16];
     
     [button setTitle:title forState:UIControlStateNormal];
     
-    if ( imgN )
-    {
-        [button setImage:iN forState:UIControlStateNormal];
-    }
-    if ( imgH )
-    {
-        [button setImage:iH forState:UIControlStateHighlighted];
-    }
-    if ( imgD )
-    {
-        [button setImage:iD forState:UIControlStateDisabled];
-    }
-    
+    [button setImageN:imgN H:imgH D:imgD S:nil];
     
     UIBarButtonItem* bi;
     
     bi = [[UIBarButtonItem alloc] initWithCustomView:button];
+//    bi.customView.backgroundColor = [UIColor orangeColor];
     
     return bi;
 }

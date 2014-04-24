@@ -13,5 +13,6 @@
 + (UIButton*) buttonWithTarget:(id)target action:(SEL)sel;
 - (void) setTextN:(NSString*)n H:(NSString*)h D:(NSString*)d S:(NSString *)s;
 - (void) setImageN:(NSString*)n H:(NSString*)h D:(NSString*)d S:(NSString *)s;
+- (void) setBackgroundImageN:(NSString*)n H:(NSString*)h D:(NSString*)d S:(NSString *)s;
 
 @end

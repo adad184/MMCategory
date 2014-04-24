@@ -30,5 +30,6 @@
 - (UIImage *)fixOrientation;
 
 + (UIImage *)imageName:(NSString*)name;
+- (UIImage *)decodedImage;
 
 @end

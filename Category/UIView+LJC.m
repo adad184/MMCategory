@@ -95,4 +95,68 @@
     return NO;
 }
 
+- (void)setRoundedCornersRadius:(CGFloat)radius
+{
+    [self setRoundedCorners:UIRectCornerAllCorners radius:radius];
+}
+
+- (void)setRoundedCorners:(UIRectCorner)corners radius:(CGFloat)radius
+{
+	CGRect rect = self.bounds;
+    
+    // Create the path
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:rect
+                                                   byRoundingCorners:corners
+                                                         cornerRadii:CGSizeMake(radius, radius)];
+    
+    // Create the shape layer and set its path
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.frame = rect;
+    maskLayer.path = maskPath.CGPath;
+    
+    // Set the newly created shape layer as the mask for the view's layer
+    self.layer.mask = maskLayer;
+}
+
+- (void)setShadowRadius:(CGFloat)radius
+{
+    [self setShadowCorners:UIRectCornerAllCorners radius:radius];
+}
+
+- (void)setShadowCorners:(UIRectCorner)corners radius:(CGFloat)radius
+{
+	CGRect rect = self.bounds;
+    
+    
+    self.layer.shadowRadius = 2.0f;
+    self.layer.shadowColor = [UIColor darkGrayColor].CGColor;
+    self.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+    self.layer.shadowOpacity = 1.0f;
+    self.layer.shadowPath = [[UIBezierPath bezierPathWithRoundedRect:rect
+                                                   byRoundingCorners:corners
+                                                         cornerRadii:CGSizeMake(radius, radius)] CGPath];
+}
+
+- (void)pauseAnimation
+{
+    NSFUNC;
+    CALayer *layer = self.layer;
+    CFTimeInterval pausedTime = [layer convertTime:CACurrentMediaTime() fromLayer:nil];
+    layer.speed = 0.0;
+    layer.timeOffset = pausedTime;
+}
+
+- (void)resumeAnimation
+{
+    NSFUNC;
+    CALayer *layer = self.layer;
+//    [layer addAnimation:[APP rotateAnimation] forKey:@"rotate"];
+    CFTimeInterval pausedTime = [layer timeOffset];
+    layer.speed = 1.0;
+    layer.timeOffset = 0.0;
+    layer.beginTime = 0.0;
+    CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
+    layer.beginTime = timeSincePause;
+}
+
 @end

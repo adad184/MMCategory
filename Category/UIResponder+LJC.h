@@ -12,4 +12,7 @@
 
 +(id)currentFirstResponder;
 
++(void) cacheKeyboard;
++(void) cacheKeyboard:(BOOL)onNextRunloop;
+
 @end

@@ -18,12 +18,12 @@
                 hasD:(BOOL)hasD 
               titles:(NSArray*)titles
 {
-    int count = buttons.count;
+    NSUInteger count = buttons.count;
     float w = self.frame.size.width/count;
     float h = self.frame.size.height;
     
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:count];
-    for ( int i = 0 ; i < count ; ++i )
+    for ( NSUInteger i = 0 ; i < count ; ++i )
     {
         NSString *strN = [NSString stringWithFormat:@"%@N.png",[images objectAtIndex:i]];
         NSString *strH = [NSString stringWithFormat:@"%@H.png",[images objectAtIndex:i]];

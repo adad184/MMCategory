@@ -15,10 +15,10 @@
 #define FlexibleH                   UIViewAutoresizingFlexibleHeight
 #define FlexibleW                   UIViewAutoresizingFlexibleWidth
 
-#define FixedMarginT                FlexibleL | FlexibleR | FlexibleB
-#define FixedMarginB                FlexibleL | FlexibleR | FlexibleT
-#define FixedMarginL                FlexibleT | FlexibleB | FlexibleR
-#define FixedMarginR                FlexibleT | FlexibleB | FlexibleL
+#define FixedMarginT                FlexibleW | FlexibleB
+#define FixedMarginB                FlexibleW | FlexibleT
+#define FixedMarginL                FlexibleH | FlexibleR
+#define FixedMarginR                FlexibleH | FlexibleL
 #define FixedHorizental             FlexibleW | FlexibleT | FlexibleB
 #define FixedVertical               FlexibleH | FlexibleL | FlexibleR
 #define FixedALL                    FlexibleW | FlexibleH
@@ -35,6 +35,15 @@
 
 - (UIView *) getFirstResponder;
 - (BOOL) haveSubview:(UIView*)subView;
+
+- (void)setRoundedCornersRadius:(CGFloat)radius;
+- (void)setRoundedCorners:(UIRectCorner)corners radius:(CGFloat)radius;
+
+- (void)setShadowRadius:(CGFloat)radius;
+- (void)setShadowCorners:(UIRectCorner)corners radius:(CGFloat)radius;
+
+- (void)pauseAnimation;
+- (void)resumeAnimation;
 
 @property (nonatomic, readonly ) float x;
 @property (nonatomic, readonly ) float y;

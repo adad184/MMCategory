@@ -27,3 +27,4 @@
 #import "UITableView+LJC.h"
 #import "MBProgressHUD+LJC.h"
 #import "UIScrollView+LJC.h"
+#import "UIApplication+LJC.h"

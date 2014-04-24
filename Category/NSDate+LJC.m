@@ -26,7 +26,7 @@
     NSDate *now = [NSDate date];
     
     NSTimeZone *nowTimeZone = [NSTimeZone localTimeZone];
-    int timeOffset = [nowTimeZone secondsFromGMTForDate:[NSDate date]];
+    NSInteger timeOffset = [nowTimeZone secondsFromGMTForDate:[NSDate date]];
     
     NSDate  *newDate = [now dateBySubtractingSecond:timeOffset];
     return newDate;
@@ -35,7 +35,7 @@
 + (NSDate*) dateFromGMT:(NSDate*)date
 {
     NSTimeZone *nowTimeZone = [NSTimeZone localTimeZone];
-    int timeOffset  = [nowTimeZone secondsFromGMTForDate:[NSDate date]];
+    NSInteger timeOffset  = [nowTimeZone secondsFromGMTForDate:[NSDate date]];
     
     NSDate *newDate = [date dateByAddingSecond:timeOffset];
     return newDate;
