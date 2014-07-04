@@ -7,7 +7,7 @@
 //
 
 #import "UIImage+LJC.h"
-
+@import QuartzCore;
 
 @implementation UIImage (LJC)
 
@@ -56,10 +56,11 @@
 }
 
 + (UIImage *)imageWithColor:(UIColor *)color Size:(CGSize)size
-{
+{    
     CGRect rect = CGRectMake(0.0f, 0.0f, size.width, size.height);
-    UIGraphicsBeginImageContext(rect.size);
+    UIGraphicsBeginImageContext(size);
     CGContextRef context = UIGraphicsGetCurrentContext();
+    
     
     CGContextSetFillColorWithColor(context, [color CGColor]);
     CGContextFillRect(context, rect);

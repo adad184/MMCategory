@@ -33,47 +33,6 @@
         
         self.title = NSStringFromClass([self class]);
         self.hidesBottomBarWhenPushed = YES;
-        self.view.backgroundColor = [UIColor colorWithHex:0xE6E6E6FF];
-        self.contentView = [[UIView alloc] initWithFrame:self.view.bounds];
-        self.contentView.autoresizingMask = FixedALL;
-        [self.view addSubview:self.contentView];
-        
-        self.statusView = [[UIView alloc] initWithFrame:self.contentView.bounds];
-        self.statusView.backgroundColor = self.view.backgroundColor;
-        self.statusView.autoresizingMask = FixedALL;
-        [self.contentView addSubview:self.statusView];
-        
-        
-        self.statusCenterView = [[UIView alloc] initWithFrame:CGRectZero];
-        [self.statusCenterView setPosition:CGRectMake(self.statusView.center.x, self.statusView.center.y,320, 80)];
-        self.statusCenterView.autoresizingMask = FixedCenter;
-        [self.statusView addSubview:self.statusCenterView];
-//        self.statusCenterView.backgroundColor = [UIColor orangeColor];
-        
-        self.labelStatus = [UILabel pureLabelWithFrame:CGRectMake(0, 0, self.statusCenterView.w, self.statusCenterView.h/2)];
-        self.labelStatus.numberOfLines = 0;
-        self.labelStatus.textAlignment = NSTextAlignmentCenter;
-        self.labelStatus.textColor = [UIColor darkGrayColor];
-        [self.statusCenterView addSubview:self.labelStatus];
-        
-        self.btnStatus = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.btnStatus.frame = CGRectMake(self.statusCenterView.w/3, self.statusCenterView.h/2, self.statusCenterView.w/3, self.statusCenterView.h/2);
-        [self.btnStatus setTitle:@"重试" forState:UIControlStateNormal];
-        [self.btnStatus setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHex:0xE52A04FF]] forState:UIControlStateNormal];
-        [self.btnStatus setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHex:0xA41B05FF]] forState:UIControlStateHighlighted];
-        [self.statusCenterView addSubview:self.btnStatus];
-        self.btnStatus.layer.cornerRadius = 5.0f;
-        self.btnStatus.layer.masksToBounds = YES;
-        
-        
-        self.indicatorStatus = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        self.indicatorStatus.center = self.btnStatus.center;
-        self.indicatorStatus.hidesWhenStopped = YES;
-        [self.statusCenterView addSubview:self.indicatorStatus];
-        
-        self.statusView.hidden = YES;
-        
-        [self setViewStatus:MMViewStatusTypeLoaded];
         
     }
     return self;
@@ -84,17 +43,54 @@
 {
     [super viewDidLoad];
     
+    
+    self.view.backgroundColor = [UIColor colorWithHex:0xE6E6E6FF];
+    self.contentView = [[UIView alloc] initWithFrame:self.view.bounds];
+    self.contentView.autoresizingMask = FixedALL;
+    [self.view addSubview:self.contentView];
+    
+    self.statusView = [[UIView alloc] initWithFrame:self.contentView.bounds];
+    self.statusView.backgroundColor = self.view.backgroundColor;
+    self.statusView.autoresizingMask = FixedALL;
+    [self.contentView addSubview:self.statusView];
+    
+    
+    self.statusCenterView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self.statusCenterView setPosition:CGRectMake(self.statusView.center.x, self.statusView.center.y,320, 80)];
+    self.statusCenterView.autoresizingMask = FixedCenter;
+    [self.statusView addSubview:self.statusCenterView];
+    //        self.statusCenterView.backgroundColor = [UIColor orangeColor];
+    
+    self.labelStatus = [UILabel pureLabelWithFrame:CGRectMake(0, 0, self.statusCenterView.w, self.statusCenterView.h/2)];
+    self.labelStatus.numberOfLines = 0;
+    self.labelStatus.textAlignment = NSTextAlignmentCenter;
+    self.labelStatus.textColor = [UIColor darkGrayColor];
+    [self.statusCenterView addSubview:self.labelStatus];
+    
+    self.btnStatus = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.btnStatus.frame = CGRectMake(self.statusCenterView.w/3, self.statusCenterView.h/2, self.statusCenterView.w/3, self.statusCenterView.h/2);
+    [self.btnStatus setTitle:@"重试" forState:UIControlStateNormal];
+    [self.btnStatus setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHex:0xE52A04FF]] forState:UIControlStateNormal];
+    [self.btnStatus setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHex:0xA41B05FF]] forState:UIControlStateHighlighted];
+    [self.statusCenterView addSubview:self.btnStatus];
+    self.btnStatus.layer.cornerRadius = 5.0f;
+    self.btnStatus.layer.masksToBounds = YES;
+    
+    
+    self.indicatorStatus = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.indicatorStatus.center = self.btnStatus.center;
+    self.indicatorStatus.hidesWhenStopped = YES;
+    [self.statusCenterView addSubview:self.indicatorStatus];
+    
+    self.statusView.hidden = YES;
+    
+    [self setViewStatus:MMViewStatusTypeLoaded];
+    
     if( [self respondsToSelector:@selector(setEdgesForExtendedLayout:)] )
     {
         self.edgesForExtendedLayout=UIRectEdgeNone;
         self.extendedLayoutIncludesOpaqueBars=NO;
         self.automaticallyAdjustsScrollViewInsets=NO;
-    }
-    
-	// Do any additional setup after loading the view.
-    if ( [self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)] )
-    {
-        //        [self setNeedsStatusBarAppearanceUpdate];
     }
     
     [self.view layoutSubviews];

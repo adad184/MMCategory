@@ -28,4 +28,15 @@
     }
 }
 
+- (void)killScroll
+{
+    CGPoint offset = self.contentOffset;
+    offset.x -= 1.0;
+    offset.y -= 1.0;
+    [self setContentOffset:offset animated:NO];
+    offset.x += 1.0;
+    offset.y += 1.0;
+    [self setContentOffset:offset animated:NO];
+}
+
 @end

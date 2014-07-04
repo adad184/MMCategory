@@ -18,7 +18,6 @@ typedef NS_ENUM(NSInteger, MMViewStatusType) {
 
 @interface MMViewController : UIViewController
 
-
 @property (nonatomic, assign) BOOL showDismissButton;
 @property (nonatomic, assign) BOOL isPoppingOut;
 @property (nonatomic, assign) BOOL isFirstLoaded;

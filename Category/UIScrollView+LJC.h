@@ -11,5 +11,5 @@
 @interface UIScrollView (LJC)
 
 - (void)scrollToView:(UIView *)v;
-
+- (void)killScroll;
 @end

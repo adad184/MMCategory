@@ -42,61 +42,23 @@
 
 - (void) setImageN:(NSString*)n H:(NSString*)h D:(NSString*)d S:(NSString *)s
 {
-    if ( n )
-    {
-        [self setImage:[UIImage imageName:n] forState:UIControlStateNormal];
-    }
+    [self setImage:n?[UIImage imageName:n]:nil forState:UIControlStateNormal];
+    [self setImage:h?[UIImage imageName:h]:nil forState:UIControlStateHighlighted];
+    [self setImage:d?[UIImage imageName:d]:nil forState:UIControlStateDisabled];
+    [self setImage:s?[UIImage imageName:s]:nil forState:UIControlStateSelected];
+    [self setImage:(s&&h)?[UIImage imageName:h]:nil forState:UIControlStateHighlighted | UIControlStateSelected];
     
-    if ( h )
-    {
-        [self setImage:[UIImage imageName:h] forState:UIControlStateHighlighted];
-    }
-    
-    if ( d )
-    {
-        [self setImage:[UIImage imageName:d] forState:UIControlStateDisabled];
-    }
-    
-    if ( s )
-    {
-        [self setImage:[UIImage imageName:s] forState:UIControlStateSelected];
-        
-        if ( h )
-        {
-            [self setImage:[UIImage imageName:h] forState:UIControlStateHighlighted | UIControlStateSelected];
-        }
-        
-    }
 }
 
 
 - (void) setBackgroundImageN:(NSString*)n H:(NSString*)h D:(NSString*)d S:(NSString *)s
 {
-    if ( n )
-    {
-        [self setBackgroundImage:[[UIImage imageName:n] stretched] forState:UIControlStateNormal];
-    }
     
-    if ( h )
-    {
-        [self setBackgroundImage:[[UIImage imageName:h] stretched] forState:UIControlStateHighlighted];
-    }
-    
-    if ( d )
-    {
-        [self setBackgroundImage:[[UIImage imageName:d] stretched] forState:UIControlStateDisabled];
-    }
-    
-    if ( s )
-    {
-        [self setBackgroundImage:[[UIImage imageName:s] stretched] forState:UIControlStateSelected];
-        
-        if ( h )
-        {
-            [self setBackgroundImage:[[UIImage imageName:h] stretched] forState:UIControlStateHighlighted | UIControlStateSelected];
-        }
-        
-    }
+    [self setBackgroundImage:n?[[UIImage imageName:n] stretched]:nil forState:UIControlStateNormal];
+    [self setBackgroundImage:h?[[UIImage imageName:h] stretched]:nil forState:UIControlStateHighlighted];
+    [self setBackgroundImage:d?[[UIImage imageName:d] stretched]:nil forState:UIControlStateDisabled];
+    [self setBackgroundImage:s?[[UIImage imageName:s] stretched]:nil forState:UIControlStateSelected];
+    [self setBackgroundImage:(s&&h)?[[UIImage imageName:h] stretched]:nil forState:UIControlStateHighlighted | UIControlStateSelected];
 }
 
 
