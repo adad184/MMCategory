@@ -10,7 +10,7 @@
 
 @interface UIResponder (LJC)
 
-+(id)currentFirstResponder;
+- (id)currentFirstResponder;
 
 +(void) cacheKeyboard;
 +(void) cacheKeyboard:(BOOL)onNextRunloop;

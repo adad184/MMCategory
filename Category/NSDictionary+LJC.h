@@ -14,5 +14,6 @@
 @property (nonatomic, readonly) NSString *msg;
 
 - (id)objectForKeyNotNull:(id)key;
+- (id)objectForKeyNotNil:(id)key;
 
 @end

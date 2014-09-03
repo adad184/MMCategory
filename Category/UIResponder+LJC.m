@@ -7,6 +7,9 @@
 //
 
 #import "UIResponder+LJC.h"
+#import <objc/runtime.h>
+
+static char *MMFirstResponderKey = "FirstResponderKey";
 
 
 static BOOL hasAlreadyCachedKeyboard;
@@ -20,14 +23,21 @@ static __weak id currentFirstResponder;
 @implementation UIResponder (LJC)
 
 
-+(id)currentFirstResponder {
-    currentFirstResponder = nil;
-    [[UIApplication sharedApplication] sendAction:@selector(findFirstResponder:) to:nil from:nil forEvent:nil];
-    return currentFirstResponder;
+- (id)currentFirstResponder {
+    [UIApplication.sharedApplication sendAction:@selector(findFirstResponder:)
+                                             to:nil from:self forEvent:nil];
+    id obj = objc_getAssociatedObject(self, MMFirstResponderKey);
+    objc_setAssociatedObject(self, MMFirstResponderKey, nil, OBJC_ASSOCIATION_ASSIGN);
+    return obj;
 }
 
--(void)findFirstResponder:(id)sender {
-    currentFirstResponder = self;
+- (void)setCurrentFirstResponder:(id)responder {
+    objc_setAssociatedObject(self, MMFirstResponderKey, responder,
+                             OBJC_ASSOCIATION_ASSIGN);
+}
+
+- (void)findFirstResponder:(id)sender {
+    [sender setCurrentFirstResponder:self];
 }
 
 

@@ -32,7 +32,15 @@
 - (id)objectForKeyNotNull:(id)key {
     id object = [self objectForKey:key];
     if (object == [NSNull null])
-        return nil;
+        return @"";
+    
+    return object;
+}
+
+- (id)objectForKeyNotNil:(id)key {
+    id object = [self objectForKeyNotNull:key];
+    if (object == nil)
+        return @"";
     
     return object;
 }
