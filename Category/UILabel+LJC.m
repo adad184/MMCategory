@@ -30,12 +30,12 @@
 
 + (id)pureLabel
 {
-    return [UILabel pureLabelWithFrame:CGRectZero];
+    return [self.class pureLabelWithFrame:CGRectZero];
 }
 
 + (id)pureLabelWithFrame:(CGRect)frame
 {
-    UILabel *label = [[UILabel alloc] initWithFrame:frame];
+    id label = [[self.class alloc] initWithFrame:frame];
     [label pure];
     
     return label;

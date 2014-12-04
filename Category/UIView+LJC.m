@@ -31,6 +31,30 @@
     return self.frame.size.height;
 }
 
+-(void) setX:(float) newX {
+    CGRect frame = self.frame;
+    frame.origin.x = newX;
+    self.frame = frame;
+}
+
+-(void) setY:(float) newY {
+    CGRect frame = self.frame;
+    frame.origin.y = newY;
+    self.frame = frame;
+}
+
+-(void) setW:(float) newWidth {
+    CGRect frame = self.frame;
+    frame.size.width = newWidth;
+    self.frame = frame;
+}
+
+-(void) setH:(float) newHeight {
+    CGRect frame = self.frame;
+    frame.size.height = newHeight;
+    self.frame = frame;
+}
+
 - (void)setTagName:(NSString*)name
 {
     self.tag = [name hash];

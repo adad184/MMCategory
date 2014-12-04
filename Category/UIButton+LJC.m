@@ -40,6 +40,11 @@
     }
 }
 
+- (void)setImageN:(NSString *)n
+{
+    [self setImageN:n H:nil D:nil S:nil];
+}
+
 - (void) setImageN:(NSString*)n H:(NSString*)h D:(NSString*)d S:(NSString *)s
 {
     [self setImage:n?[UIImage imageName:n]:nil forState:UIControlStateNormal];
@@ -47,6 +52,18 @@
     [self setImage:d?[UIImage imageName:d]:nil forState:UIControlStateDisabled];
     [self setImage:s?[UIImage imageName:s]:nil forState:UIControlStateSelected];
     [self setImage:(s&&h)?[UIImage imageName:h]:nil forState:UIControlStateHighlighted | UIControlStateSelected];
+    
+    [self setImageN:n H:h D:d S:s HS:((s&&h)?h:nil)];
+    
+}
+
+- (void) setImageN:(NSString*)n H:(NSString*)h D:(NSString*)d S:(NSString *)s HS:(NSString *)hs
+{
+    [self setImage:n?[UIImage imageName:n]:nil forState:UIControlStateNormal];
+    [self setImage:h?[UIImage imageName:h]:nil forState:UIControlStateHighlighted];
+    [self setImage:d?[UIImage imageName:d]:nil forState:UIControlStateDisabled];
+    [self setImage:s?[UIImage imageName:s]:nil forState:UIControlStateSelected];
+    [self setImage:hs?[UIImage imageName:hs]:nil forState:UIControlStateHighlighted | UIControlStateSelected];
     
 }
 

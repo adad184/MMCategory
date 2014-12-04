@@ -29,3 +29,4 @@
 #import "UIScrollView+LJC.h"
 #import "UIApplication+LJC.h"
 #import "CLLocation+LJC.h"
+#import "NSTimer+LJC.h"
